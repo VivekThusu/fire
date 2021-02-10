@@ -7,6 +7,7 @@ This implementation focuses on the following aspects:
 * Logging with Aspects Oriented Programming fundamentals
 * Custom Error Handling using Controller Advices
 * Use of Mappers for POJOs e.g. MapStruct
+* Usage of In-memory database - H2
 * Implementation of Lombok
 * Security with Basic Authentication
 * Test Cases with Mockito
