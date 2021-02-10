@@ -1,6 +1,5 @@
 package com.embl.fire;
 
-import com.embl.fire.model.PersonDTO;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
