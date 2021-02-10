@@ -22,7 +22,7 @@ mvn clean install
 ````
 OR 
 
-* For generating the docker image as well, run the below command
+* For generating the docker image as well, run the below command and it will create a docker image called "fire"
 ```bash
 mvn clean install -Ddocker
 ```
