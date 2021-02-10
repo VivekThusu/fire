@@ -37,17 +37,15 @@ After successful build, you can check the docker image built using the command :
 There are 2 ways to run the application:
 
 * Run the below command after you have successfully built the jar
-
-    
-    java -jar fire-1.0.jar
-
+```bash
+java -jar fire-1.0.jar
+```
 OR 
 
 * If you wish to run the app in a docker container, make sure you have created the docker image using the above mentioned build command (2nd method). Then, run the below command:
-
-    
-    docker run -p 8080:8080 fire
-    
+```bash
+docker run -p 8080:8080 fire
+```    
     
 ## How to access the APIs
 
