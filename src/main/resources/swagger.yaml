@@ -1,0 +1,262 @@
+openapi: 3.0.0
+info:
+  title: EMBL API
+  description: Provides a service for storing, updating, retrieving and deleting Person entities
+  version: 1.0.0
+  termsOfService: 'http://google.com'
+  contact:
+    email: 'vivek.thusu04@gmail.com'
+  license:
+    name: EBML Dummy License
+    url: 'http://google.com'
+servers:
+  - url: http://localhost/embl-fire
+    description: My Server description
+
+tags:
+  - name: person
+    description: Everything about Person
+    externalDocs:
+      description: Read more
+      url: 'http://google.com'
+
+########################################################
+#Paths
+########################################################
+paths:
+  '/persons':
+    post:
+      tags:
+        - person
+      summary: Saves a Person entity
+      description: Api to save a Person enity into database.
+      operationId: savePersonEntity
+      requestBody:
+        description: Person object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonDTO'
+      responses:
+        '201':
+          $ref: "#/components/responses/SuccessPersonResponse"
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    get:
+      tags:
+        - person
+      summary: Returns a list of all Person enity
+      description: Api to return all Person records in the database.
+      operationId: getAllPersonEntities
+      responses:
+        '200':    # status code
+          description: list of person entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonList'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  '/persons/{firstName}':
+    get:
+      tags:
+        - person
+      summary: Returns the Person enity
+      description: Api to return the person entity with given firstName.
+      operationId: getPersonEntityByFirstName
+      parameters:
+        - $ref: '#/components/parameters/firstName'
+      responses:
+        '200':    # status code
+          $ref: "#/components/responses/SuccessPersonResponse"
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    delete:
+      tags:
+        - person
+      summary: Deletes the Person entity
+      description: Api to delete the Person enity with given firstName.
+      operationId: deletePersonEntityByFirstName
+      parameters:
+        - $ref: '#/components/parameters/firstName'
+      responses:
+        '200':    # status code
+          description: deleted
+          content: {}
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+    patch:
+      tags:
+        - person
+      summary: Updates the Person entity
+      description: Api to update the Person enity with given firstName.
+      operationId: updatePersonEntityByFirstName
+      parameters:
+        - $ref: '#/components/parameters/firstName'
+      requestBody:
+        description: Person patch object
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PersonPatchDTO'
+      responses:
+        '200':    # status code
+          $ref: "#/components/responses/SuccessPersonResponse"
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+########################################################
+#Components
+########################################################
+components:
+  parameters:
+    firstName:
+      in: path
+      name: firstName
+      schema:
+        type: string
+      required: true
+      description: First Name of the person
+
+  ########################################################
+  #Schemas
+  ########################################################
+  schemas:
+    PersonList:
+      type: object
+      properties:
+        person:
+          type: array
+          items:
+            $ref: '#/components/schemas/PersonDTO'
+    PersonDTO:
+      type: object
+      properties:
+        first_name:
+          type: string
+        last_name:
+          type: string
+        age:
+          type: integer
+          format: int32
+          minimum: 0
+        favourite_colour:
+          type: string
+      required:
+        - first_name
+        - last_name
+        - age
+    PersonPatchDTO:
+      type: object
+      properties:
+        last_name:
+          nullable: true
+          type: string
+        age:
+          nullable: true
+          type: integer
+          format: int32
+          minimum: 0
+        favourite_colour:
+          nullable: true
+          type: string
+
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        status:
+          type: string
+        message:
+          type: string
+        detail:
+          type: string
+        fieldErrors:
+          type: array
+          items:
+            $ref: "#/components/schemas/FieldError"
+      additionalProperties: false
+
+    FieldError:
+      type: object
+      properties:
+        field:
+          type: string
+        code:
+          type: string
+        rejectedValue:
+          type: object
+        defaultMessage:
+          type: string
+
+  ########################################################
+  #Responses
+  ########################################################
+  responses:
+    SuccessPersonResponse:
+      description: person entity
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PersonDTO'
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    InternalServerError:
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'

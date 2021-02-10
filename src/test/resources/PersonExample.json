@@ -1,0 +1,20 @@
+[
+  {
+    "firstName": "JohnTest",
+    "lastName": "Doe",
+    "age": 20,
+    "favouriteColour": "red"
+  },
+  {
+    "firstName": "BillTest",
+    "lastName": "Gates",
+    "age": 50,
+    "favouriteColour": "blue"
+  },
+  {
+    "firstName": "JeffTest",
+    "lastName": "Hardy",
+    "age": 36,
+    "favouriteColour": "peach"
+  }
+]
