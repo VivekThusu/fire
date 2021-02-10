@@ -27,7 +27,7 @@ OR
 mvn clean install -Ddocker
 ```
 #### Note: 
-Ensure you have docker installed and running on your machine in order to create the docker image.
+Ensure that you have docker installed and running on your machine in order to create the docker image.
 After successful build, you can check the docker image built using the command :
 
     docker images
@@ -53,7 +53,7 @@ OR
 
 There is a postman collection at the root directory in the repository called "personAPIs.postman_collection.json"
 
-[personAPIs.postman_collection.json"](https://github.com/VivekThusu/fire/blob/master/personAPIs.postman_collection.json)    
+[personAPIs.postman_collection.json](https://github.com/VivekThusu/fire/blob/master/personAPIs.postman_collection.json)    
 
 Import the collection in postman and it has all the implemented APIs.
 
