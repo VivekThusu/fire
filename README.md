@@ -56,5 +56,7 @@ There is a postman collection at the root directory in the repository called "pe
 
 Import the collection in postman and it has all the implemented APIs.
 
+`Note`: To switch users for authentication, make sure you are clearing the cookies.
+
 In either case, the application will run on localhost and port: 8080
 

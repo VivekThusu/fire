@@ -6,308 +6,520 @@
 	},
 	"item": [
 		{
-			"name": "getAllPersonEntities",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "username",
-							"value": "user",
-							"type": "string"
+			"name": "APIs",
+			"item": [
+				{
+					"name": "getAllPersonEntities",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "user@123",
+									"type": "string"
+								}
+							]
 						},
-						{
-							"key": "password",
-							"value": "user@123",
-							"type": "string"
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/embl-fire/persons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"embl-fire",
+								"persons"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/embl-fire/persons",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"embl-fire",
-						"persons"
-					]
+				{
+					"name": "getPersonEntityByFirstName",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/embl-fire/persons/Jeff",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"embl-fire",
+								"persons",
+								"Jeff"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "savePersonEntity",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"vivek\",\n    \"last_name\": \"thusu\",\n    \"age\": 26,\n    \"favourite_colour\": \"black\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/embl-fire/persons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"embl-fire",
+								"persons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPersonEntityByFirstName=vivek after saving",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/embl-fire/persons/vivek",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"embl-fire",
+								"persons",
+								"vivek"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePersonEntityByFirstName",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"age\": 45,\n    \"favourite_colour\": \"white\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/embl-fire/persons/vivek",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"embl-fire",
+								"persons",
+								"vivek"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPersonEntityByFirstName=vivek after patching",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/embl-fire/persons/vivek",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"embl-fire",
+								"persons",
+								"vivek"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deletePersonEntityByFirstName",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/embl-fire/persons/vivek",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"embl-fire",
+								"persons",
+								"vivek"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getPersonEntityByFirstName=vivek after deleting",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/embl-fire/persons/vivek",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"embl-fire",
+								"persons",
+								"vivek"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
-			"name": "getPersonEntityByFirstName",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "user@123",
-							"type": "string"
+			"name": "Validations",
+			"item": [
+				{
+					"name": "savePersonEntity when firstName is not present",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
 						},
-						{
-							"key": "username",
-							"value": "user",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/embl-fire/persons/Jeff",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"embl-fire",
-						"persons",
-						"Jeff"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "savePersonEntity",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "admin@123",
-							"type": "string"
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"last_name\": \"thusu\",\n    \"age\": 26,\n    \"favourite_colour\": \"black\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "string"
+						"url": {
+							"raw": "http://localhost:8080/embl-fire/persons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"embl-fire",
+								"persons"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"first_name\": \"vivek\",\n    \"last_name\": \"thusu\",\n    \"age\": 26,\n    \"favourite_colour\": \"black\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/embl-fire/persons",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"embl-fire",
-						"persons"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getPersonEntityByFirstName=vivek after saving",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "admin@123",
-							"type": "string"
+				{
+					"name": "savePersonEntity when age is a negative Number",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
 						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "string"
-						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/embl-fire/persons/vivek",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"embl-fire",
-						"persons",
-						"vivek"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "updatePersonEntityByFirstName",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "admin@123",
-							"type": "string"
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"thusu\",\n    \"last_name\": \"vivek\",\n    \"age\": -26,\n    \"favourite_colour\": \"black\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "string"
+						"url": {
+							"raw": "http://localhost:8080/embl-fire/persons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"embl-fire",
+								"persons"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "PATCH",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n    \"age\": 45,\n    \"favourite_colour\": \"white\"\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:8080/embl-fire/persons/vivek",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"embl-fire",
-						"persons",
-						"vivek"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getPersonEntityByFirstName=vivek after patching",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "admin@123",
-							"type": "string"
+				{
+					"name": "getAllPersonEntities with HttpMethod PUT",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "user@123",
+									"type": "string"
+								}
+							]
 						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "string"
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/embl-fire/persons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"embl-fire",
+								"persons"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/embl-fire/persons/vivek",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"embl-fire",
-						"persons",
-						"vivek"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "deletePersonEntityByFirstName",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "admin@123",
-							"type": "string"
+				{
+					"name": "wrong endPoint",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "user@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
 						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "string"
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/embl-fire/wrong-endpoint",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"embl-fire",
+								"wrong-endpoint"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/embl-fire/persons/vivek",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"embl-fire",
-						"persons",
-						"vivek"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "getPersonEntityByFirstName=vivek after deleting",
-			"request": {
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "admin@123",
-							"type": "string"
+				{
+					"name": "savePersonEntity - wrong media type",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin@123",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
 						},
-						{
-							"key": "username",
-							"value": "admin",
-							"type": "string"
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "xml"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/embl-fire/persons",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"embl-fire",
+								"persons"
+							]
 						}
-					]
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/embl-fire/persons/vivek",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"embl-fire",
-						"persons",
-						"vivek"
-					]
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }
